@@ -6,7 +6,7 @@ const TheaterSchema = new mongoose.Schema({
     pic: String,
     location: String,
     telephonenum: String,
-    moviesshowing: String,
+    moviesshowing: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     showtimes: String,
     websitelink: String
 })
