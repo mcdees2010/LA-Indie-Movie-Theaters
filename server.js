@@ -5,6 +5,7 @@ const express = require('express'),
       logging = require('morgan'),
       mongoose = require('mongoose'),
       TheaterRouter = require('./routes/TheaterRouter'),
+      userRouter = require('./routes/UserRouter'),
       { PORT, MONGODB_URI } = process.env;
 
 mongoose.connect(MONGODB_URI, err => {
@@ -14,6 +15,7 @@ mongoose.connect(MONGODB_URI, err => {
 app.use(logging('dev'));
 app.use(express.json());
 app.use('/api/theaters', TheaterRouter);
+app.use('/api/users', userRouter);
 
 
 app.listen(PORT, err => {
