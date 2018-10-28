@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import httpClient from './utilities/httpClient';
 import Logout from './components/Logout/Logout';
+import Signup from './components/Signup/Signup';
 
 
 class App extends Component {
@@ -28,6 +29,9 @@ class App extends Component {
               }}/>
               <Route path="/logout" render={() => {
                 return <Logout onLogout={onLogout}/>
+              }}/>
+              <Route path="/signup" render={(props) => {
+                return <Signup {...props} onSignupSuccess={onAuthSuccess}/>
               }}/>
           </Switch>
       </Layout>
