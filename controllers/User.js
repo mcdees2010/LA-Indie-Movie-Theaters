@@ -1,5 +1,5 @@
 const User = require('../models/User'),
-      signToken = require('../serverAuth').signToken;
+      signToken = require('../routes/serverAuth').signToken;
 
 exports.index = (req, res) => {
     User.find({}, (err, users) => {
