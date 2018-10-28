@@ -18,8 +18,7 @@ exports.create = (req, res) => {
 }
 
 exports.show = (req, res) => {
-    let { id } = req.params;
-    User.findById(id, (err, showUser) => {
+    User.findById(req.params.id, (err, showUser) => {
         if (err) res.json({success: false, err});
         res.json({success: true, showUser})
     })
@@ -38,8 +37,7 @@ exports.update = (req, res) => {
 }
 
 exports.destroy = (req, res) => {
-    let { id } = req.params;
-    User.findByIdAndDelete(id, (err, deletedUser) => {
+    User.findByIdAndDelete(req.params.id, (err, deletedUser) => {
         if (err) res.json({success: false, err});
         res.json({success: true, deletedUser})
     })

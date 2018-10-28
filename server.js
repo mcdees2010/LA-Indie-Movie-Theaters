@@ -16,6 +16,7 @@ app.use(logging('dev'));
 app.use(express.json());
 app.use('/api/theaters', TheaterRouter);
 app.use('/api/users', userRouter);
+app.use(express.urlencoded({extended: true}));
 
 
 app.listen(PORT, err => {
