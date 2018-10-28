@@ -3,6 +3,8 @@ import Layout from './components/common/Layout/Layout';
 import { Route, Switch } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
+import httpClient from './utilities/httpClient';
+
 
 class App extends Component {
   state = { currentUser: httpClient.getCurrentUser()}
