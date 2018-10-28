@@ -15,7 +15,7 @@ class App extends Component {
     let { currentUser } = this.state;
     let { onAuthSuccess } = this;
     return (
-      <Layout>
+      <Layout currentUser={currentUser}>
           <Switch>
               <Route exact path="/" component={Home}/>
               <Route path="/login" render={(props) => {
