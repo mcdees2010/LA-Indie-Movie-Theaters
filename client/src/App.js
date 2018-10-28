@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import httpClient from './utilities/httpClient';
+import Logout from './components/Logout/Logout';
 
 
 class App extends Component {
@@ -11,15 +12,22 @@ class App extends Component {
   onAuthSuccess = () => {
     this.setState({currentUser: httpClient.getCurrentUser()});
   }
+  onLogout = () => {
+    httpClient.logOut();
+    this.setState({ currentUser: null});
+  }
   render() {
     let { currentUser } = this.state;
-    let { onAuthSuccess } = this;
+    let { onAuthSuccess, onLogout } = this;
     return (
       <Layout currentUser={currentUser}>
           <Switch>
               <Route exact path="/" component={Home}/>
               <Route path="/login" render={(props) => {
                 return <Login {...props} onLoginSuccess={onAuthSuccess}/>
+              }}/>
+              <Route path="/logout" render={() => {
+                return <Logout onLogout={onLogout}/>
               }}/>
           </Switch>
       </Layout>
