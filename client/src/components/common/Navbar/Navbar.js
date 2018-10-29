@@ -11,7 +11,6 @@ export default ({ currentUser }) => {
             </div>
             <div className="navbar-menu">
                 <div className="navbar-start">
-                    <Link to="/theatres" className="navbar-item">Special Events</Link>
                     <Link to="/new" className="navbar-item">add</Link>
                 </div>
                 <div className="navbar-end">
