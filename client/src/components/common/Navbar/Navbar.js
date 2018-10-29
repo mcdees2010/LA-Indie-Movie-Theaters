@@ -1,13 +1,15 @@
 import React from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
+import Navbar from 'react-bootstrap/lib/Navbar';
 
 export default ({ currentUser }) => {
     return(
         <nav className="nav clearfix">
             <div className="float-left">
-                <span className="nav-link">LA</span>
+                <span className="nav-link">LA indies</span>
                 <Link className="nav-link" to="/">Home</Link>
+                <Link className="nav-link" to="/theaters">Theaters</Link>
             </div>
             <div className="float-right">
                 {currentUser
