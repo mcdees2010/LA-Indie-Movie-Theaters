@@ -6,7 +6,7 @@ class Logout extends Component{
         this.props.onLogout();
     }
     render(){
-        return <Redirect to="/login"/>
+        return <Redirect to="/"/>
     }
 }
 

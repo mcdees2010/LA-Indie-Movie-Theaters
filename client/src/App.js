@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Layout from './components/common/Layout/Layout';
 import { Route, Switch } from 'react-router-dom';
+import httpClient from './utilities/httpClient';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
-import httpClient from './utilities/httpClient';
 import Logout from './components/Logout/Logout';
 import Signup from './components/Signup/Signup';
-import Theatres from './components/Theaters/Theaters';
 import NotFound from './components/NotFound/NotFound';
+import createTheatre from './components/createTheatre/createTheatre';
 
 
 class App extends Component {
@@ -35,7 +35,7 @@ class App extends Component {
               <Route path="/signup" render={(props) => {
                 return <Signup {...props} onSignupSuccess={onAuthSuccess}/>
               }}/>
-              <Route path="/theatres" component={Theatres}/>
+              <Route path="/new" component={createTheatre}/>
               <Route component={NotFound}/>
           </Switch>
       </Layout>
