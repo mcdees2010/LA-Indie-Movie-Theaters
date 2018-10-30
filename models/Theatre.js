@@ -14,6 +14,8 @@ module.exports = Theatre;
 // SHOWPAGE:
 // location: String,
 //     telephonenum: String,
-//     moviesshowing: String,
-//     showtimes: String,
 //     websitelink: String
+
+// present the showtimes to the user and movies currently showing at that theatre
+
+// usermovies schema

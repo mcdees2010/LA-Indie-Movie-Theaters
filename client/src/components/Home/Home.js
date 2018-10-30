@@ -9,7 +9,6 @@ class Home extends Component {
     };
     async componentDidMount() {
         let response  = await axios.get('/api/theatres');
-        // console.log(response.data.theatres)
         let { theatres } = response.data;
         this.setState({ theatres: theatres})
     }

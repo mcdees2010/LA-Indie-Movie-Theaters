@@ -7,7 +7,6 @@ import Login from './components/Login/Login';
 import Logout from './components/Logout/Logout';
 import Signup from './components/Signup/Signup';
 import NotFound from './components/NotFound/NotFound';
-import createTheatre from './components/createTheatre/createTheatre';
 
 
 class App extends Component {
@@ -35,7 +34,6 @@ class App extends Component {
               <Route path="/signup" render={(props) => {
                 return <Signup {...props} onSignupSuccess={onAuthSuccess}/>
               }}/>
-              <Route path="/new" component={createTheatre}/>
               <Route component={NotFound}/>
           </Switch>
       </Layout>

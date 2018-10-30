@@ -1,35 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Navbar.css'
 
 export default ({ currentUser }) => {
     return(
-        <nav className="navbar is-light" role="navigation" aria-label="main navigation">
-            <div className="navbar-brand">
-                <a className="navbar-item" href="/">
-                <img src="http://www.pidgi.net/wiki/images/f/fc/Logo_Star_Cup_-_Mario_Kart_8.svg" alt="Bulma: a modern CSS framework based on Flexbox" width="140" height="45"/>
-                </a>
-            </div>
-            <div className="navbar-menu">
-                <div className="navbar-start">
-                    <Link to="/new" className="navbar-item">add</Link>
-                </div>
-                <div className="navbar-end">
-                {currentUser
-                    ? (
-                        <span>
-                            <span>Welcome, {currentUser.name}</span>
-                            <Link to="/logout" className="navbar-item">Logout</Link>
-                        </span>
-                    )
-                    : (
-                        <span>
-                            <Link to="/login" className="navbar-item">Log In</Link>
-                            <Link to="/signup" className="navbar-item">Sign Up</Link>
-                        </span>
-                    )
-                }
-                </div>
-            </div>
-        </nav>
+        <nav className="nav clearfix">
+        <div className="float-left">
+            <Link className="nav-link" to="/">LA-Movies</Link>
+            <Link className="nav-link" to="/theatres">events</Link>
+        </div>
+        <div className="float-right">
+            {currentUser
+                ? (
+                    <span>
+                        <span className="nav-link">Welcome, {currentUser.name}</span>
+                        <Link className="nav-link" to="/logout">Logout</Link>
+                    </span>
+                )
+                : (
+                    <span>
+                        <Link className="nav-link" to="/login">Log In</Link>
+                        <Link className="nav-link" to="/signup">Sign Up</Link>
+                    </span>
+                )
+            }
+           
+        </div>
+    </nav>
     )
 }
