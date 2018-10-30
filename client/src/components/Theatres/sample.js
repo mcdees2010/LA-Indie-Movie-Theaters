@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Theatre from '../Theatres/Theatre';
 
-class Home extends Component {
+class Sample extends Component {
     state = { 
         theatres: [],
         message: "Loading"
@@ -27,4 +27,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default Sample;
