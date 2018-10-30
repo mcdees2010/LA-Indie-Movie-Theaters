@@ -3,11 +3,12 @@ import Layout from './components/common/Layout/Layout';
 import { Route, Switch } from 'react-router-dom';
 import httpClient from './utilities/httpClient';
 import Home from './components/Home/Home';
-import Sample from './components/Theatres/sample';
+import Theatres from './components/Theatres/Theatres';
 import Login from './components/Login/Login';
 import Logout from './components/Logout/Logout';
 import Signup from './components/Signup/Signup';
 import NotFound from './components/NotFound/NotFound';
+import showTheatre from './components/Theatres/showTheatre';
 
 class App extends Component {
   state = { currentUser: httpClient.getCurrentUser()}
@@ -25,7 +26,8 @@ class App extends Component {
       <Layout currentUser={currentUser}>
           <Switch>
               <Route exact path="/" component={Home}/>
-              <Route path="/theatres" component={Sample}/>
+              <Route path="/theatres" component={Theatres}/>
+              <Route path="/theatres/:id" component={showTheatre}/>
               <Route path="/login" render={(props) => {
                 return <Login {...props} onLoginSuccess={onAuthSuccess}/>
               }}/>
@@ -43,3 +45,5 @@ class App extends Component {
 }
 
 export default App;
+
+// try nesting theatres id in the theatres when the page loads - may save a 3rd api call
