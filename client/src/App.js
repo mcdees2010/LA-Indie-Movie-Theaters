@@ -3,11 +3,11 @@ import Layout from './components/common/Layout/Layout';
 import { Route, Switch } from 'react-router-dom';
 import httpClient from './utilities/httpClient';
 import Home from './components/Home/Home';
+import Sample from './components/Theatres/sample';
 import Login from './components/Login/Login';
 import Logout from './components/Logout/Logout';
 import Signup from './components/Signup/Signup';
 import NotFound from './components/NotFound/NotFound';
-
 
 class App extends Component {
   state = { currentUser: httpClient.getCurrentUser()}
@@ -25,6 +25,7 @@ class App extends Component {
       <Layout currentUser={currentUser}>
           <Switch>
               <Route exact path="/" component={Home}/>
+              <Route path="/theatres" component={Sample}/>
               <Route path="/login" render={(props) => {
                 return <Login {...props} onLoginSuccess={onAuthSuccess}/>
               }}/>

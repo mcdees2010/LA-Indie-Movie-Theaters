@@ -1,6 +1,7 @@
 import React from 'react';
+import './theatre.css';
 
-const TheatreContainer = ({ theatre }) => {
+const Theatre = ({ theatre }) => {
     return (
         <ul>
             {theatre.map((theatres, i) => 
@@ -13,4 +14,4 @@ const TheatreContainer = ({ theatre }) => {
     )
 }
 
-export default TheatreContainer
+export default Theatre;
