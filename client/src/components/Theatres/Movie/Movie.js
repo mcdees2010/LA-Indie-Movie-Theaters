@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 class Movie extends Component{
     state = {
-        movies: []
+        movies: [],
+        favorited: false
     }
     constructMovie({title, id, poster_image_thumbnail}){
         let movie = { title, id, poster_image_thumbnail, showtimes: []};
@@ -28,6 +28,16 @@ class Movie extends Component{
         }))
         this.setState({ movies });
     }
+    favoriteMovie = async () => {
+        let { id, title } = this.state.movies;
+        let movie = await axios.post('/users', { title, id});
+        if (movie.data.success) this.setState({ favorited: true}); 
+    }
+    unfavoriteMovie = async () => {
+        let { id } = this.state.movies;
+        let movie = await axios.delete(`/users/${id}`);
+        if (movie.data.success) this.setState({favorited: false});
+    }
     render(){
         let { movies } = this.state;
         return(
@@ -37,6 +47,8 @@ class Movie extends Component{
                         <li key={id}>
                             {title}
                             <img src={poster_image_thumbnail}/>
+                            <button>seen it</button>
+                            <button>want to see</button>
                             <ul>
                             {showtimes.map((s, i) => 
                                 <li key={i}>

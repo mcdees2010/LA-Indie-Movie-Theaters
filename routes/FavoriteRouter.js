@@ -1,12 +1,11 @@
-const express = require('express');
-      router = express.Router();
-      Favorite = require('../controllers/Favorite');
+const express = require('express'),
+      router = new express.Router(),
+      Favorite = require('../controllers/Favorite'),
+      verifyToken = require('./serverAuth').verifyToken;
 
-router.get('/', Favorite.index);
-router.post('/', Favorite.create);
-router.patch('/:id', Favorite.update);
-router.get('/:id', Favorite.show);
-router.delete('/:id', Favorite.destroy);
 
+router.use(verifyToken);
+router.post('/:favorite_id', Favorite.create);
+router.delete('/:favorite_id', Favorite.destroy);
 
 module.exports = router;

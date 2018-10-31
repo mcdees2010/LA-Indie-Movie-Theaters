@@ -14,9 +14,11 @@ mongoose.connect(MONGODB_URI, err => {
 
 app.use(logging('dev'));
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
 app.use('/api/favorites', FavoriteRouter);
 app.use('/api/users', userRouter);
-app.use(express.urlencoded({extended: true}));
+
 
 
 app.listen(PORT, err => {

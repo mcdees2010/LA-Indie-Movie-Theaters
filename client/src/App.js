@@ -9,6 +9,7 @@ import Logout from './components/Logout/Logout';
 import Signup from './components/Signup/Signup';
 import NotFound from './components/NotFound/NotFound';
 import Movie from './components/Theatres/Movie/Movie';
+import Favorites from './components/Favorites/Favorites';
 
 class App extends Component {
   state = { currentUser: httpClient.getCurrentUser()}
@@ -28,6 +29,7 @@ class App extends Component {
               <Route exact path="/" component={Home}/>
               <Route exact path="/theatres" component={Theatres}/>
               <Route path="/theatres/:id" component={Movie}/>
+              <Route path="/favorites" component={Favorites}/>
               <Route path="/login" render={(props) => {
                 return <Login {...props} onLoginSuccess={onAuthSuccess}/>
               }}/>

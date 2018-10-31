@@ -2,10 +2,11 @@ const
 	mongoose = require('mongoose'),
 	bcrypt = require('bcrypt-nodejs'),
 	FavoriteSchema = new mongoose.Schema({
-		movieId: String,
-		title: String,
+		movieID: {type: String, unique: true, required: true},
+		title: {type: String, required: true},
 		seen: Boolean,
-		wantToSee: Boolean
+		wantToSee: Boolean,
+		author: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 	}),
 	userSchema = new mongoose.Schema({
 		name: { type: String },

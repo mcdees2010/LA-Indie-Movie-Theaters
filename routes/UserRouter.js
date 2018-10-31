@@ -1,5 +1,5 @@
 const express = require('express'),
-      router = express.Router(),
+      router = new express.Router(),
       verifyToken = require('./serverAuth').verifyToken,
       User = require('../controllers/User');
 
