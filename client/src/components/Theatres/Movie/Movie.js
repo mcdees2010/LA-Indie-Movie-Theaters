@@ -12,11 +12,19 @@ class Movie extends Component{
     async componentDidMount(){
         let { id } = this.props.match.params;
         let movieData = await axios.get(`https://api.internationalshowtimes.com/v4/movies/?cinema_id=${id}&apikey=RhuZxXz2vTqfvHw7sfhlcLt8UMevNdgw`);
-        let showtimeData = await axios.get('https://api.internationalshowtimes.com/v4/showtimes/?cinema_id=40216&apikey=RhuZxXz2vTqfvHw7sfhlcLt8UMevNdgw');
-        console.log(showtimeData)
+        let showtimeData = await axios.get(`https://api.internationalshowtimes.com/v4/showtimes/?cinema_id=${id}&apikey=RhuZxXz2vTqfvHw7sfhlcLt8UMevNdgw`);
+        // console.log(showtimeData.data.showtimes)
         let { movies } = movieData.data;
-        
-        this.setState({ movies })
+        let { showtimes } = showtimeData.data;
+        movies = movies.map(this.constructMovie);
+        console.log(movies);
+        movies.forEach((movie => {
+            showtimes.forEach((show => {
+                if (movie.id === show.movie_id){
+                    movie.showtimes.push({time: show.start_at})
+                }
+            }))
+        }))
     }
     render(){
         let { movies } = this.state;
