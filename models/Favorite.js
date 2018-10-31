@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
-const TheatreSchema = new mongoose.Schema({
-    name: String,
+const FavoriteSchema = new mongoose.Schema({
+    title: String,
     pic: String
 })
 
-const Theatre = mongoose.model("Theatre", TheatreSchema);
+const Favorite = mongoose.model("Favorite", FavoriteSchema);
 
-module.exports = Theatre;
+module.exports = Favorite;
 
 // theaterId: String,
 // favorited: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},

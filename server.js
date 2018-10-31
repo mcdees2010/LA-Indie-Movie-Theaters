@@ -4,7 +4,7 @@ const express = require('express'),
       app = express(),
       logging = require('morgan'),
       mongoose = require('mongoose'),
-      TheatreRouter = require('./routes/TheatreRouter'),
+      FavoriteRouter = require('./routes/FavoriteRouter'),
       userRouter = require('./routes/UserRouter'),
       { PORT, MONGODB_URI } = process.env;
 
@@ -14,7 +14,7 @@ mongoose.connect(MONGODB_URI, err => {
 
 app.use(logging('dev'));
 app.use(express.json());
-app.use('/api/theatres', TheatreRouter);
+app.use('/api/favorites', FavoriteRouter);
 app.use('/api/users', userRouter);
 app.use(express.urlencoded({extended: true}));
 
