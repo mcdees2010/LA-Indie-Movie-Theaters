@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Movie extends Component{
     state = {
@@ -21,7 +22,7 @@ class Movie extends Component{
         movies.forEach((movie => {
             showtimes.forEach((show => {
                 if (movie.id === show.movie_id){
-                    movie.showtimes.push({time: show.start_at})
+                    movie.showtimes.push({time: show.start_at, tickets: show.booking_link})
                 }
             }))
         }))
@@ -38,7 +39,10 @@ class Movie extends Component{
                             <img src={poster_image_thumbnail}/>
                             <ul>
                             {showtimes.map((s, i) => 
-                                <li key={i}>{s.time}</li>
+                                <li key={i}>
+                                {s.time}
+                                <p><a href={s.tickets}>get tickets</a></p>
+                                </li>   
                             )}
                             </ul>
                         </li>
