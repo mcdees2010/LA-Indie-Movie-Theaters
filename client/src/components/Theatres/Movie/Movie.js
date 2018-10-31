@@ -17,7 +17,7 @@ class Movie extends Component{
         let { movies } = movieData.data;
         let { showtimes } = showtimeData.data;
         movies = movies.map(this.constructMovie);
-        console.log(movies);
+        // console.log(movies);
         movies.forEach((movie => {
             showtimes.forEach((show => {
                 if (movie.id === show.movie_id){
@@ -25,19 +25,25 @@ class Movie extends Component{
                 }
             }))
         }))
+        this.setState({ movies });
     }
     render(){
         let { movies } = this.state;
         return(
             <div>
-                {movies.map((m, i) =>
-                    <ul>
-                        <li key={i}>
-                            {m.title}
+                <ul>
+                {movies.map(({id, title, poster_image_thumbnail, showtimes}) =>
+                        <li key={id}>
+                            {title}
+                            <img src={poster_image_thumbnail}/>
+                            <ul>
+                            {showtimes.map((s, i) => 
+                                <li key={i}>{s.time}</li>
+                            )}
+                            </ul>
                         </li>
-                        <img src={m.poster_image_thumbnail}/>
-                    </ul>
                 )}
+                </ul>
             </div>
         )
     }

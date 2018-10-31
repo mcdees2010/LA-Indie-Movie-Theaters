@@ -15,13 +15,13 @@ class Theatres extends Component{
         let { theatres } = this.state; 
         return(
             <div>
+                <ul>
                 {theatres.map(({name, id}) => 
-                    <ul>
                         <li key={id}>
                             <Link to={`theatres/${id}`}>{name}</Link>
                         </li>
-                    </ul>
                 )}
+                </ul>
             </div>
         )
     }
