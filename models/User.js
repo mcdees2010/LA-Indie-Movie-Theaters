@@ -1,10 +1,17 @@
 const
 	mongoose = require('mongoose'),
 	bcrypt = require('bcrypt-nodejs'),
+	FavoriteSchema = new mongoose.Schema({
+		movieId: String,
+		title: String,
+		seen: Boolean,
+		wantToSee: Boolean
+	}),
 	userSchema = new mongoose.Schema({
 		name: { type: String },
 		email: { type: String, required: true, unique: true },
-		password: { type: String, required: true }
+		password: { type: String, required: true },
+		favorites: [FavoriteSchema]
     })
     
 userSchema.methods.generateHash = function(password) {

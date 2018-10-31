@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const FavoriteSchema = new mongoose.Schema({
+    movieId: String,
     title: String,
     pic: String
 })
