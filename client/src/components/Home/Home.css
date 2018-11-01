@@ -1,0 +1,10 @@
+.pic {
+    background: url(https://www.travelcaffeine.com/wp-content/uploads/2017/05/pacific-cinerama-dome-arclight-cinema-hollywood-sunset-los-angeles-california.jpg);
+    background-size: cover;
+    height: 100vh;
+}
+
+h1 {
+    color: lightgrey;
+    opacity: 0.7;
+}

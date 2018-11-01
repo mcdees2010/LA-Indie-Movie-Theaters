@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ControlledCarousel from './Carousel';
 import { Link } from 'react-router-dom';
 
 class Theatres extends Component{
@@ -15,6 +16,7 @@ class Theatres extends Component{
         let { theatres } = this.state; 
         return(
             <div>
+                <ControlledCarousel/>
                 <ul>
                 {theatres.map(({name, id}) => 
                         <li key={id}>

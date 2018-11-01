@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Card from 'react-bootstrap/lib/Card';
+import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
+import ListGroup from 'react-bootstrap/lib/ListGroup';
 
 class Movie extends Component{
     state = {
@@ -41,26 +44,35 @@ class Movie extends Component{
     render(){
         let { movies } = this.state;
         return(
-            <div>
-                <ul>
+            <ul>
                 {movies.map(({id, title, poster_image_thumbnail, showtimes}) =>
-                        <li key={id}>
-                            {title}
-                            <img src={poster_image_thumbnail}/>
-                            <button>seen it</button>
-                            <button>want to see</button>
-                            <ul>
-                            {showtimes.map((s, i) => 
-                                <li key={i}>
-                                {s.time}
-                                <p><a href={s.tickets}>get tickets</a></p>
-                                </li>   
-                            )}
-                            </ul>
-                        </li>
-                )}
-                </ul>
-            </div>
+                     <li key={id}>
+            <Card style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={poster_image_thumbnail}/>
+            <Card.Body>
+                <Card.Title>{title}</Card.Title>
+                <Card.Text>
+                <button>seen it</button>
+                <button>want to see</button>
+                </Card.Text>
+            </Card.Body>
+            <ul>
+                {showtimes.map((s, i) => 
+            <ListGroup className="list-group-flush">
+                <ListGroupItem key={i}>{s.time}
+                <p><a href={s.tickets}>get tickets</a></p>
+                </ListGroupItem>
+            </ListGroup>
+            )}
+            </ul>
+            <Card.Body>
+                <Card.Link href="#">Card Link</Card.Link>
+                <Card.Link href="#">Another Link</Card.Link>
+            </Card.Body>
+            </Card>
+            </li>
+            )}
+            </ul>
         )
     }
 }

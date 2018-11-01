@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
+import './Home.css'
+
 
 class Home extends Component {
     render() {
         return (
-            <div>
+            <div className="pic">
                 <h1>Welcome!</h1>
                 <div>
-                    <div>
-                        <h1>will be splash pageeeeeee</h1>
-                    </div>
                 </div>
             </div>
         );
