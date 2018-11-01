@@ -3,6 +3,10 @@ import axios from 'axios';
 import Card from 'react-bootstrap/lib/Card';
 import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
 import ListGroup from 'react-bootstrap/lib/ListGroup';
+import Container from 'react-bootstrap/lib/Container';
+import Col from 'react-bootstrap/lib/Col';
+import Row from 'react-bootstrap/lib/Row';
+import Button from 'react-bootstrap/lib/Button';
 
 class Movie extends Component{
     state = {
@@ -44,16 +48,17 @@ class Movie extends Component{
     render(){
         let { movies } = this.state;
         return(
-            <ul>
+            <Container>
+                <Row>
                 {movies.map(({id, title, poster_image_thumbnail, showtimes}) =>
-                     <li key={id}>
+                     <Col key={id}>
             <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" src={poster_image_thumbnail}/>
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>
-                <button>seen it</button>
-                <button>want to see</button>
+                <Button variant="outline-info">seen it</Button>
+                <Button variant="outline-dark">want to see</Button>
                 </Card.Text>
             </Card.Body>
             <ul>
@@ -65,14 +70,11 @@ class Movie extends Component{
             </ListGroup>
             )}
             </ul>
-            <Card.Body>
-                <Card.Link href="#">Card Link</Card.Link>
-                <Card.Link href="#">Another Link</Card.Link>
-            </Card.Body>
             </Card>
-            </li>
+            </Col>
             )}
-            </ul>
+            </Row>
+            </Container>
         )
     }
 }
