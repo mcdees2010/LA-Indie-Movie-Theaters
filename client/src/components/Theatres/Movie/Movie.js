@@ -22,6 +22,7 @@ class Movie extends Component{
         let movieData = await axios.get(`https://api.internationalshowtimes.com/v4/movies/?cinema_id=${id}&apikey=RhuZxXz2vTqfvHw7sfhlcLt8UMevNdgw`);
         let showtimeData = await axios.get(`https://api.internationalshowtimes.com/v4/showtimes/?cinema_id=${id}&apikey=RhuZxXz2vTqfvHw7sfhlcLt8UMevNdgw`);
         // console.log(showtimeData.data.showtimes)
+        
         let { movies } = movieData.data;
         let { showtimes } = showtimeData.data;
         movies = movies.map(this.constructMovie);

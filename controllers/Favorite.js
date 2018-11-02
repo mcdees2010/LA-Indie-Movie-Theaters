@@ -1,7 +1,6 @@
 const User = require('../models/User');
 
 exports.create = (req, res) => {
-    console.log("Favor");
     let { id } = req.user
     User.findById(id, (err, user) => {
         if (err) res.json({success: false, err});
@@ -10,11 +9,7 @@ exports.create = (req, res) => {
             if (err) res.json({success: false, err});
             res.json({ success: true, favorites: user.favorites})
         })
-        /* push favorite data into user's favorites array */
-        /* save the user */
-        // wayfarer posts and places
     })
-
 }
 
 exports.destroy = (req, res) => {
