@@ -21,6 +21,8 @@ class App extends Component {
     httpClient.logOut();
     this.setState({ currentUser: null});
   }
+
+
   render() {
     let { currentUser } = this.state;
     let { onAuthSuccess, onLogout } = this;
@@ -29,7 +31,9 @@ class App extends Component {
           <Switch>
               <Route exact path="/" component={Home}/>
               <Route exact path="/theatres" component={Theatres}/>
-              <Route path="/theatres/:id" component={Movie}/>
+              <Route exact path="/theatres/:id" render={(props) => {
+                return <Movie {...props} currentUser={currentUser}/>
+              }}/>
               <Route exact path="/profile" render={(props) => {
                 return <Profile {...props} currentUser={currentUser}/>
               }}/>

@@ -30,11 +30,20 @@ class Profile extends Component{
             </Jumbotron>
             <h3>Movies You Have Seen:</h3>
             <ul>
-                {user.favorites && user.favorites.map(({title, _id}) => {
-                    return <li key={_id}>{title}</li>
+                {user.favorites && user.favorites.map(({title, _id, seen}) => {
+                    if(seen === true){
+                        return <li key={_id}>{title}</li>
+                    }
                 })}
             </ul>
-            
+            <h3>Movies You Want To See:</h3>
+            <ul>
+                {user.favorites && user.favorites.map(({title, _id, wantToSee}) => {
+                    if(wantToSee === true){
+                        return <li key={_id}>{title}</li>
+                    }
+                })}
+            </ul>
             </div>
         )
     }
