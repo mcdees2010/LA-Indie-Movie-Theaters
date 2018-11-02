@@ -6,7 +6,6 @@ const
 		title: {type: String, required: true},
 		seen: Boolean,
 		wantToSee: Boolean,
-		author: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 	}),
 	userSchema = new mongoose.Schema({
 		name: { type: String },

@@ -5,7 +5,7 @@ const express = require('express'),
 
 
 router.use(verifyToken);
-router.post('/:favorite_id', Favorite.create);
+router.post('/', Favorite.create);
 router.delete('/:favorite_id', Favorite.destroy);
 
 module.exports = router;

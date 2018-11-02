@@ -12,11 +12,12 @@ export default ({ currentUser }) => {
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
                 <Nav.Link href="/theatres">Theatres</Nav.Link>
+                <Nav.Link href="/profile">Profile</Nav.Link>
             </Nav>
             {currentUser 
                 ? (
                     <Nav>
-                        <Navbar.Brand>Welcome {currentUser.name}</Navbar.Brand>
+                        <Navbar.Brand>Welcome, {currentUser.name}</Navbar.Brand>
                         <Nav.Link as={Link} to="/logout">Logout</Nav.Link>
                     </Nav>
                 )

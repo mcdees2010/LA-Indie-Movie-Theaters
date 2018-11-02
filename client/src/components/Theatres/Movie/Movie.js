@@ -36,17 +36,18 @@ class Movie extends Component{
         this.setState({ movies });
     }
     favoriteMovie = async () => {
-        let { id, title } = this.state.movies;
-        let movie = await axios.post('/users', { title, id});
-        if (movie.data.success) this.setState({ favorited: true}); 
+        let {id, title} = this.state.movies;
+        let movie = await axios.post('/api/favorites', {id, title});
+        if (movie.data.success) this.setState({favorited: true})
     }
     unfavoriteMovie = async () => {
-        let { id } = this.state.movies;
-        let movie = await axios.delete(`/users/${id}`);
+        let { favorite_id } = this.state.movies;
+        let movie = await axios.delete(`/api/favorites/${favorite_id}`);
         if (movie.data.success) this.setState({favorited: false});
     }
     render(){
-        let { movies } = this.state;
+        let { movies, favorited } = this.state;
+        let { unfavoriteMovie, favoriteMovie } = this;
         return(
             <Container>
                 <Row>
@@ -57,8 +58,10 @@ class Movie extends Component{
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>
-                <Button variant="outline-info">seen it</Button>
-                <Button variant="outline-dark">want to see</Button>
+                {favorited
+                    ? <Button onClick={unfavoriteMovie} variant="outline-dark">unfavorite</Button>
+                    : <Button onClick={favoriteMovie} variant="outline-info">seen it</Button>
+                }
                 </Card.Text>
             </Card.Body>
             <ul>
