@@ -25,7 +25,7 @@ class Login extends Component {
         let { email, password } = this.state;
         let { handleChange, handleSubmit } = this;
         return (
-            <div>
+            <div className="container">
                 <Header text={"Login"}/>
                 <div className="row">
                     <div className="column column-50 column-offset-25">
