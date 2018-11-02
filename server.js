@@ -26,7 +26,6 @@ app.get("*", (req, res) => {
 	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
-
 app.listen(PORT, err => {
     console.log(err || `listening on port ${PORT}....`)
 })
