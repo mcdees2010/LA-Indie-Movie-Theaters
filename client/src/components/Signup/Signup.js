@@ -27,7 +27,7 @@ class Signup extends Component {
         let { email, password, name } = this.state;
         let { handleChange, handleSubmit } = this;
         return (
-            <div>
+            <div className="container">
                 <Header text={"Sign Up"}/>
                 <div className="row">
                     <div className="column column-50 column-offset-25">
