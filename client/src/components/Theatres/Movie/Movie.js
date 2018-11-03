@@ -65,7 +65,7 @@ class Movie extends Component{
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>
                 {seen
-                    ? <Button onClick={unfavoriteMovie} variant="outline-dark">unfavorite</Button>
+                    ? <h1></h1>
                     : <Button onClick={()=>favoriteMovie({movieID:id, title, seen: true, wantToSee: false})} variant="outline-info">seen it</Button>
                 }
                 {wantToSee
