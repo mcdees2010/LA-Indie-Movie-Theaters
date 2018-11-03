@@ -3,19 +3,24 @@ import httpClient from '../../utilities/httpClient';
 import Jumbotron from 'react-bootstrap/lib/Jumbotron';
 import Container from 'react-bootstrap/lib/Container';
 import './Profile.css';
+import axios from 'axios';
 
 class Profile extends Component{
     state = {
-        user: {}
+        user: []
     }
     async componentDidMount() {
         let res = await httpClient({ method: "get", url: `/api/users/${this.props.currentUser._id}` });
         let userData = res.data.showUser;
-        console.log("api",userData)
         this.setState({ user: userData});
+    }
+    handleDelete = async ({_id}) => {        
+        await axios.delete(`/api/favorites/${_id}`);
+        this.props.history.push('/profile');
     }
     render(){
         let { user } = this.state;
+        let { handleDelete } = this;
         if (!user) return <div></div>
         return(
             <div className="container">
@@ -32,7 +37,7 @@ class Profile extends Component{
             <ul>
                 {user.favorites && user.favorites.map(({title, _id, seen}) => {
                     if(seen === true){
-                        return <li key={_id}>{title}</li>
+                        return <li key={_id}>{title}<button onClick={() => handleDelete({_id})}>remove</button></li>
                     }
                 })}
             </ul>
@@ -40,7 +45,7 @@ class Profile extends Component{
             <ul>
                 {user.favorites && user.favorites.map(({title, _id, wantToSee}) => {
                     if(wantToSee === true){
-                        return <li key={_id}>{title}</li>
+                        return <li key={_id}>{title}<button onClick={() => handleDelete({_id})}>remove</button></li>
                     }
                 })}
             </ul>

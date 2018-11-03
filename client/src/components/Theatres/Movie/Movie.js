@@ -42,18 +42,18 @@ class Movie extends Component{
         this.setState({ movies });
     }
     favoriteMovie = async (fav) => {
-        let movie = await axios.post('/api/favorites', fav);
-        console.log(movie)
+        await axios.post('/api/favorites', fav);
+        this.props.history.push('/profile')
     }
-    unfavoriteMovie = async (unfav) => {
-        let { favorite_id } = this.state.movies;
-        let movie = await axios.delete(`/api/favorites/${favorite_id}`, unfav);
-        // if (movie.data.success) this.setState({favorited: false});
-        console.log(movie)
-    }
+    // unfavoriteMovie = async (unfav) => {
+    //     let { favorite_id } = this.state.movies;
+    //     let movie = await axios.delete(`/api/favorites/${favorite_id}`, unfav);
+    //     // if (movie.data.success) this.setState({favorited: false});
+    //     console.log(movie)
+    // }
     render(){
         let { movies } = this.state;
-        let { unfavoriteMovie, favoriteMovie } = this;
+        let { favoriteMovie } = this;
         return(
             <Container>
                 <Row>
@@ -65,7 +65,7 @@ class Movie extends Component{
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>
                 {seen
-                    ? <h1></h1>
+                    ? <Button variant="outline-dark">unfavorite</Button>
                     : <Button onClick={()=>favoriteMovie({movieID:id, title, seen: true, wantToSee: false})} variant="outline-info">seen it</Button>
                 }
                 {wantToSee
