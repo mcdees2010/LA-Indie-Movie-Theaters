@@ -9,7 +9,7 @@ import EditForm from '../EditForm/EditForm';
 class Profile extends Component{
     state = {
 				user: httpClient.getCurrentUser(),
-				favorites:[],
+				favorites: undefined,
         editEnabled: false
     }
     async componentDidMount() {

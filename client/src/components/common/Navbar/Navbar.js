@@ -7,7 +7,7 @@ import Nav from 'react-bootstrap/lib/Nav';
 export default ({ currentUser }) => {
     return (
         <Navbar className="navbar" collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Navbar.Brand as={Link} to="/">ShowtimeLA</Navbar.Brand>
+            <Navbar.Brand as={Link} to="/">ShowtimesLA</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">

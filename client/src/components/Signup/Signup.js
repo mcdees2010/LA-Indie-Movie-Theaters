@@ -28,7 +28,7 @@ class Signup extends Component {
         let { handleChange, handleSubmit } = this;
         return (
             <div className="container">
-                <Header text={"Sign Up"}/>
+                <h4>Sign Up:</h4>
                 <div className="row">
                     <div className="column column-50 column-offset-25">
                         <form onSubmit={handleSubmit}>
@@ -39,6 +39,7 @@ class Signup extends Component {
                                     placeholder="ex. John Smith"
                                     onChange={handleChange}
                                     value={name}/>
+                                    <br />
                             <label>Email:</label>
                                 <input
                                     type="text"
@@ -46,6 +47,7 @@ class Signup extends Component {
                                     placeholder="john@john.com"
                                     onChange={handleChange}
                                     value={email}/>
+                                    <br />
                             <label>Password:</label>
                                 <input 
                                     type="password"
@@ -54,6 +56,7 @@ class Signup extends Component {
                                     onChange={handleChange}
                                     value={password}
                                     />
+                                    <br />
                             <button type="submit">submit</button>
                         </form>
                     </div>

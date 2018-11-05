@@ -1,0 +1,23 @@
+.formcontainer {
+    height: 200px;
+    width: 100%;
+    background-color: white;
+}
+
+.formcontainer h3 {
+    margin-left: 440px;
+}
+
+h3 {
+    font-family: 'Acme', sans-serif;
+    padding-top: 40px;
+}
+
+.text {
+    font-family: 'Acme', sans-serif;
+    margin-left: 480px;
+}
+
+.form {
+    margin-left: 575px;
+}

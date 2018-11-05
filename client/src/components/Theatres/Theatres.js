@@ -3,6 +3,9 @@ import axios from 'axios';
 import ControlledCarousel from './Carousel';
 import { Link } from 'react-router-dom';
 import Form from '../common/Form/Form';
+import ListGroup from 'react-bootstrap/lib/ListGroup';
+import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
+import './Theatres.css'
 
 class Theatres extends Component{
     state = {
@@ -28,16 +31,17 @@ class Theatres extends Component{
                     handleChange={this.handleChange}
                     theatre={this.state.theatre}
                     handleSubmit={this.handleSubmit}/>
-                <ul>
+                <ListGroup className="listgroup">
                 {theatres.map(({name, id}) => 
-                        <li key={id}>
-                            <Link to={`theatres/${id}`}>{name}</Link>
-                        </li>
+                    <ListGroupItem key={id}>
+                        <Link to={`theatres/${id}`}>{name}</Link>
+                    </ListGroupItem>
                 )}
-                </ul>
+                </ListGroup>
             </div>
         )
     }
 }
 
 export default Theatres;
+

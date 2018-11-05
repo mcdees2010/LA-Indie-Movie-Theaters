@@ -26,7 +26,7 @@ class Login extends Component {
         let { handleChange, handleSubmit } = this;
         return (
             <div className="container">
-                <Header text={"Login"}/>
+                <h4>Login:</h4>
                 <div className="row">
                     <div className="column column-50 column-offset-25">
                         <form onSubmit={handleSubmit}>
@@ -37,6 +37,7 @@ class Login extends Component {
                                     placeholder="enter your email..."
                                     onChange={handleChange}
                                     value={email}/>
+                                    <br />
                             <label>Password:</label>
                                 <input 
                                     type="password"
