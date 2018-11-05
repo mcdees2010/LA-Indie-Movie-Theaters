@@ -22,7 +22,7 @@ class Profile extends Component{
 				this.setState({favorites:res.data.favorites})
     }
     handleChange = (e) => {
-        let { name, value } = e.target;
+        let { value } = e.target;
         this.setState( state =>{
 					return {user: {...state.user, name:value}}
 				})
@@ -31,7 +31,7 @@ class Profile extends Component{
         e.preventDefault();
 				let { _id } = this.props.currentUser;
 				let  { name, email } = this.state.user
-        let user = await httpClient.authenticate({name, email}, `/api/users/${_id}`, "patch");
+        await httpClient.authenticate({name, email}, `/api/users/${_id}`, "patch");
 				this.props.onUpdateSuccess()
         this.setState({ 
             editEnabled: false
