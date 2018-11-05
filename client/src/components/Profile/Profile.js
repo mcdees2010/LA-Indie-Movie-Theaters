@@ -13,7 +13,6 @@ class Profile extends Component{
         editEnabled: false
     }
     async componentDidMount() {
-			// Currently the following call to users/:id is to obtain favorites
         let res = await httpClient({ method: "get", url: `/api/users/${this.props.currentUser._id}` });
         let favorites = res.data.showUser.favorites;
         this.setState({ favorites});
@@ -21,7 +20,6 @@ class Profile extends Component{
     handleDelete = async ({_id}) => {  
 				let res = await axios.delete(`/api/favorites/${_id}`);
 				this.setState({favorites:res.data.favorites})
-        // this.props.history.push('/profile');
     }
     handleChange = (e) => {
         let { name, value } = e.target;
@@ -35,9 +33,6 @@ class Profile extends Component{
 				let  { name, email } = this.state.user
         let user = await httpClient.authenticate({name, email}, `/api/users/${_id}`, "patch");
 				this.props.onUpdateSuccess()
-				//  console.log("RESPONSE", response)
-			// 	let resData = response.data.user
-      //   console.log(response.data.user)
         this.setState({ 
             editEnabled: true
         })
@@ -57,10 +52,7 @@ class Profile extends Component{
             <Jumbotron fluid>
             <Container className="profileinfo">
                 <img style={{height: 50}}src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBoZWlnaHQ9IjUxMnB4IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB4Ij48cGF0aCBkPSJtMTk2IDkwYzAgNDkuNzA3MDMxLTQwLjI5Mjk2OSA5MC05MCA5MHMtOTAtNDAuMjkyOTY5LTkwLTkwIDQwLjI5Mjk2OS05MCA5MC05MCA5MCA0MC4yOTI5NjkgOTAgOTB6bTAgMCIgZmlsbD0iIzQ2NWE2MSIvPjxwYXRoIGQ9Im0zNzYgOTBjMCA0OS43MDcwMzEtNDAuMjkyOTY5IDkwLTkwIDkwcy05MC00MC4yOTI5NjktOTAtOTAgNDAuMjkyOTY5LTkwIDkwLTkwIDkwIDQwLjI5Mjk2OSA5MCA5MHptMCAwIiBmaWxsPSIjM2I0YTUxIi8+PHBhdGggZD0ibTI5OC44OTg0MzggNDk2LjY5OTIxOS0yNS43OTY4NzYgMTUuMzAwNzgxLTc3LjEwMTU2Mi0xMzYuNjk5MjE5LTc3LjEwMTU2MiAxMzYuNjk5MjE5LTI1Ljc5Njg3Ni0xNS4zMDA3ODEgOTAtMTU5LjUgMTIuODk4NDM4IDcuODAwNzgxIDEyLjg5ODQzOC03LjgwMDc4MXptMCAwIiBmaWxsPSIjNDY1YTYxIi8+PHBhdGggZD0ibTI5OC44OTg0MzggNDk2LjY5OTIxOS0yNS43OTY4NzYgMTUuMzAwNzgxLTc3LjEwMTU2Mi0xMzYuNjk5MjE5di0zMC4zMDA3ODFsMTIuODk4NDM4LTcuODAwNzgxem0wIDAiIGZpbGw9IiMzYjRhNTEiLz48cGF0aCBkPSJtMzcyLjM2NzE4OCAyMTAuNDUzMTI1djExOS4wOTM3NWwxMzkuNjMyODEyIDM0LjY3MTg3NXYtMTg4LjQzNzV6bTAgMCIgZmlsbD0iIzNiNGE1MSIvPjxwYXRoIGQ9Im0wIDE4MHYxODBoMzkxdi0xODB6bTAgMCIgZmlsbD0iIzY5N2M4NiIvPjxwYXRoIGQ9Im0xOTYgMTgwaDE5NXYxODBoLTE5NXptMCAwIiBmaWxsPSIjNTk2Yzc2Ii8+PHBhdGggZD0ibTEwNiAxMzVjLTI0LjgxMjUgMC00NS0yMC4xODc1LTQ1LTQ1czIwLjE4NzUtNDUgNDUtNDUgNDUgMjAuMTg3NSA0NSA0NS0yMC4xODc1IDQ1LTQ1IDQ1em0wIDAiIGZpbGw9IiNlY2VjZjEiLz48cGF0aCBkPSJtMzE2IDIzMy43ODUxNTYgMjEuMjEwOTM4IDIxLjIxMDkzOC0yMS4yMTA5MzggMjEuMjEwOTM3LTIxLjIxMDkzOC0yMS4yMTA5Mzd6bTAgMCIgZmlsbD0iI2ZmNDk0OSIvPjxwYXRoIGQ9Im0yNTYgMjMzLjc4NTE1NiAyMS4yMTA5MzggMjEuMjEwOTM4LTIxLjIxMDkzOCAyMS4yMTA5MzctMjEuMjEwOTM4LTIxLjIxMDkzN3ptMCAwIiBmaWxsPSIjZmY0OTQ5Ii8+PHBhdGggZD0ibTEwNiA3NWMtOC4yNzczNDQgMC0xNSA2LjcyMjY1Ni0xNSAxNXM2LjcyMjY1NiAxNSAxNSAxNSAxNS02LjcyMjY1NiAxNS0xNS02LjcyMjY1Ni0xNS0xNS0xNXptMCAwIiBmaWxsPSIjNDY1YTYxIi8+PHBhdGggZD0ibTI4NiAxMzVjLTI0LjgxMjUgMC00NS0yMC4xODc1LTQ1LTQ1czIwLjE4NzUtNDUgNDUtNDUgNDUgMjAuMTg3NSA0NSA0NS0yMC4xODc1IDQ1LTQ1IDQ1em0wIDAiIGZpbGw9IiNlMmUyZTciLz48cGF0aCBkPSJtMjg2IDc1Yy04LjI3NzM0NCAwLTE1IDYuNzIyNjU2LTE1IDE1czYuNzIyNjU2IDE1IDE1IDE1IDE1LTYuNzIyNjU2IDE1LTE1LTYuNzIyNjU2LTE1LTE1LTE1em0wIDAiIGZpbGw9IiMzYjRhNTEiLz48L3N2Zz4K" />
-                <h1>{currentUser.name}</h1>
-                <p>
-                {currentUser.email} | 
-                </p>
+                <h3 className="name">{currentUser.name} | {currentUser.email}</h3>
             </Container>
             <div className="columns">
                 <div className="column">

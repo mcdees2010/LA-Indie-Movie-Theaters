@@ -1,17 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import './Navbar.css'
+import './Navbar.css'
 import Navbar from 'react-bootstrap/lib/Navbar';
 import Nav from 'react-bootstrap/lib/Nav';
 
 export default ({ currentUser }) => {
     return (
         <Navbar className="navbar" collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Navbar.Brand as={Link} to="/">LA Showtimes</Navbar.Brand>
+            <Navbar.Brand as={Link} to="/">ShowtimeLA</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-                <Nav.Link href="/theatres">Theatres</Nav.Link>
             </Nav>
             {currentUser 
                 ? (

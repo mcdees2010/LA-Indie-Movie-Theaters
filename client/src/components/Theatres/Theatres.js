@@ -24,7 +24,7 @@ class Theatres extends Component{
         return(
             <div>
                 <ControlledCarousel/>
-                <Form 
+                <Form
                     handleChange={this.handleChange}
                     theatre={this.state.theatre}
                     handleSubmit={this.handleSubmit}/>
