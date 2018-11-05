@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from '../common/Header/Header';
 import httpClient from '../../utilities/httpClient';
 
 class Signup extends Component {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Home.css';
 import Button from 'react-bootstrap/lib/Button';
-import { Link } from 'react-router-dom';
 
 
 class Home extends Component {
