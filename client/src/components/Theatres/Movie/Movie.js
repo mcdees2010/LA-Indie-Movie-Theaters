@@ -8,10 +8,11 @@ import Container from 'react-bootstrap/lib/Container';
 import Col from 'react-bootstrap/lib/Col';
 import Row from 'react-bootstrap/lib/Row';
 import Button from 'react-bootstrap/lib/Button';
+import moment from 'moment';
 
 class Movie extends Component{
     state = {
-        movies: [],
+        movies: []
     }
     constructMovie({title, id, poster_image_thumbnail}){
         let movie = { title, id, poster_image_thumbnail, showtimes: [], favorites: []};
@@ -45,12 +46,6 @@ class Movie extends Component{
         await axios.post('/api/favorites', fav);
         this.props.history.push('/profile')
     }
-    // unfavoriteMovie = async (unfav) => {
-    //     let { favorite_id } = this.state.movies;
-    //     let movie = await axios.delete(`/api/favorites/${favorite_id}`, unfav);
-    //     // if (movie.data.success) this.setState({favorited: false});
-    //     console.log(movie)
-    // }
     render(){
         let { movies } = this.state;
         let { favoriteMovie } = this;
@@ -77,7 +72,7 @@ class Movie extends Component{
             <ul>
                 {showtimes.map((s, i) => 
             <ListGroup className="list-group-flush">
-                <ListGroupItem key={i}>{s.time}
+                <ListGroupItem key={i}>{moment(s.time).format('llll')}
                 <p><a href={s.tickets}>get tickets</a></p>
                 </ListGroupItem>
             </ListGroup>
