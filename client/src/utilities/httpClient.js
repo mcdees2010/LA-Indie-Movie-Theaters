@@ -18,8 +18,8 @@ httpClient.getCurrentUser = function(){
     return null;
 }
 
-httpClient.authenticate = async function (credentials, url) {
-    let res = await this({ method: "post", url, data: credentials});
+httpClient.authenticate = async function (credentials, url, method) {
+    let res = await this({ method, url, data: credentials});
     const token = res.data.token;
     if (token) {
         this.defaults.headers.common.token = this.setToken(token);

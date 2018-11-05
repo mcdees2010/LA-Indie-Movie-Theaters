@@ -35,7 +35,7 @@ class App extends Component {
                 return <Movie {...props} currentUser={currentUser}/>
               }}/>
               <Route exact path="/profile" render={(props) => {
-                return <Profile {...props} currentUser={currentUser}/>
+                return <Profile {...props} onUpdateSuccess={onAuthSuccess} currentUser={currentUser}/>
               }}/>
               <Route path="/login" render={(props) => {
                 return <Login {...props} onLoginSuccess={onAuthSuccess}/>
@@ -54,5 +54,3 @@ class App extends Component {
 }
 
 export default App;
-
-// try nesting theatres id in the theatres when the page loads - may save a 3rd api call

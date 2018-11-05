@@ -15,7 +15,7 @@ class Signup extends Component {
     handleSubmit = async (e) => {
         e.preventDefault();
         let { email, password, name } = this.state;
-        let user = await httpClient.authenticate({email, password, name}, "api/users")
+        let user = await httpClient.authenticate({email, password, name}, "api/users", "post")
         this.setState({email: "", password: "", name: ""});
         if (user) {
             console.log(this.props)

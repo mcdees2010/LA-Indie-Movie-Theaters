@@ -2,7 +2,7 @@ const
 	mongoose = require('mongoose'),
 	bcrypt = require('bcrypt-nodejs'),
 	FavoriteSchema = new mongoose.Schema({
-		movieID: {type: String, unique: true, required: true},
+		movieID: {type: String, unique: true},
 		title: {type: String, required: true},
 		seen: Boolean,
 		wantToSee: Boolean,

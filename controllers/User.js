@@ -30,8 +30,9 @@ exports.update = (req, res) => {
         if (!req.body.password) delete req.body.password
         Object.assign(user, req.body)
         user.save((err, updatedUser) => {
-            if (err) res.json({success: false, err});
-            res.json({success: true, user})
+						if (err) res.json({success: false, err});
+						const token = signToken(updatedUser);
+						res.json({success: true, token})
         })
     })
 }
