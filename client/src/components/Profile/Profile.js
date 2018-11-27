@@ -75,7 +75,7 @@ class Profile extends Component{
             <ul>
                 {favorites && favorites.map(({title, _id, seen}) => {
                     if(seen === true){
-                        return <li key={_id}>{title} <h1></h1><Button bsStyle="default" onClick={() => handleDelete({_id})}>remove</Button></li>
+                        return <li key={_id}>{title} <h1></h1><Button bsStyle="default" className="remove" onClick={() => handleDelete({_id})}>remove</Button></li>
                     }
                 })}
             </ul>
@@ -84,7 +84,7 @@ class Profile extends Component{
             <ul>
                 {favorites && favorites.map(({title, _id, wantToSee}) => {
                     if(wantToSee === true){
-                        return <li key={_id}>{title} <h1></h1><Button bsStyle="default" onClick={() => handleDelete({_id})}>remove</Button></li>
+                        return <li key={_id}>{title} <h1></h1><Button bsStyle="default" className="remove" onClick={() => handleDelete({_id})}>remove</Button></li>
                     }
                 })}
             </ul>
