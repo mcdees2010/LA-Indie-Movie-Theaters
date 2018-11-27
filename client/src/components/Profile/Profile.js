@@ -78,7 +78,7 @@ class Profile extends Component{
                         return <li key={_id}>{title} <h1></h1><Button bsStyle="default" className="remove" onClick={() => handleDelete({_id})}>remove</Button></li>
                     }
                 })}
-            </ul>
+            </ul> 
             <div class="wanttosee">
             <h3>Movies You Want To See:</h3>
             <ul>
