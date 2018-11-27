@@ -14,7 +14,7 @@ class Theatres extends Component{
     }
     handleSubmit = async (e) => {
         e.preventDefault()
-        let resTheatres = await axios.get('https://api.internationalshowtimes.com/v4/cinemas/?location=34.001595,-118.48234&distance=30&apikey=RhuZxXz2vTqfvHw7sfhlcLt8UMevNdgw');
+        let resTheatres = await axios.get('https://api.internationalshowtimes.com/v4/cinemas/?location=34.001595,-118.48234&distance=30&apikey=6uwCxiBw8os3ocTKk7QpLe0x3lCuMlMs');
         let { cinemas } = resTheatres.data;
         this.setState({ theatres: cinemas, theatre: ""})
       }
