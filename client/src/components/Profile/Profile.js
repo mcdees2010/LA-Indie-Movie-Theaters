@@ -5,6 +5,8 @@ import Container from 'react-bootstrap/lib/Container';
 import './Profile.css';
 import axios from 'axios';
 import EditForm from '../EditForm/EditForm';
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/lib/Button';
 
 class Profile extends Component{
     state = {
@@ -66,22 +68,27 @@ class Profile extends Component{
                 </div>
             </div>
             </Jumbotron>
+            <div className="theatrebutton">
+                    <Link to="/theatres"><Button bsStyle="primary">back to theatres</Button></Link>
+            </div>
             <h3>Movies You Have Seen:</h3>
             <ul>
                 {favorites && favorites.map(({title, _id, seen}) => {
                     if(seen === true){
-                        return <li key={_id}>{title}<button onClick={() => handleDelete({_id})}>remove</button></li>
+                        return <li key={_id}>{title} <h1></h1><Button bsStyle="default" onClick={() => handleDelete({_id})}>remove</Button></li>
                     }
                 })}
             </ul>
+            <div class="wanttosee">
             <h3>Movies You Want To See:</h3>
             <ul>
                 {favorites && favorites.map(({title, _id, wantToSee}) => {
                     if(wantToSee === true){
-                        return <li key={_id}>{title}<button onClick={() => handleDelete({_id})}>remove</button></li>
+                        return <li key={_id}>{title} <h1></h1><Button bsStyle="default" onClick={() => handleDelete({_id})}>remove</Button></li>
                     }
                 })}
             </ul>
+            </div>
             </div>
         )
     }

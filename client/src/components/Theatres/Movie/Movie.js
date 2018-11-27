@@ -12,7 +12,8 @@ import moment from 'moment';
 
 class Movie extends Component{
     state = {
-        movies: []
+        movies: [],
+        loading: true
     }
     constructMovie({title, id, poster_image_thumbnail}){
         let movie = { title, id, poster_image_thumbnail, showtimes: [], favorites: []};
@@ -39,15 +40,16 @@ class Movie extends Component{
                 }
             }))
         }))
-        this.setState({ movies });
+        this.setState({ movies, loading: false });
     }
     favoriteMovie = async (fav) => {
         await axios.post('/api/favorites', fav);
         this.props.history.push('/profile')
     }
     render(){
-        let { movies } = this.state;
+        let { movies, loading } = this.state;
         let { favoriteMovie } = this;
+        if (loading) return <div>Loading....</div>
         return(
             <Container>
                 <Row>
