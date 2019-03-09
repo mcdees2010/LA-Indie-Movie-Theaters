@@ -21,8 +21,8 @@ class Movie extends Component{
     }
     async componentDidMount(){
         let { id } = this.props.match.params;
-        let movieData = await axios.get(`https://api.internationalshowtimes.com/v4/movies/?cinema_id=${id}&apikey=1OiDbZASAlNDSEU0BNUXIkOXPyhCpPUd`);
-        let showtimeData = await axios.get(`https://api.internationalshowtimes.com/v4/showtimes/?cinema_id=${id}&apikey=1OiDbZASAlNDSEU0BNUXIkOXPyhCpPUd`);
+        let movieData = await axios.get(`https://api.internationalshowtimes.com/v4/movies/?cinema_id=${id}&apikey=abPWFfwSc0kOhsNcKf7GjqGRHVnET6eZ`);
+        let showtimeData = await axios.get(`https://api.internationalshowtimes.com/v4/showtimes/?cinema_id=${id}&apikey=abPWFfwSc0kOhsNcKf7GjqGRHVnET6eZ`);
         let res = await httpClient({ method: "get", url: `/api/users/${this.props.currentUser._id}` });
         let {favorites} = res.data.showUser;    
         let { movies } = movieData.data;
